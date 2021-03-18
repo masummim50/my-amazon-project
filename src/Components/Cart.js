@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { cartContext } from '../App';
+import { UserContext } from '../App';
 
-const Cart = () => {
-  const [cartProduct, setCartProduct] = useContext(cartContext);
+const Cart = (props) => {
+  const [loggedInUser, setLoggedInUser, cartProduct, setCartProduct] = useContext(UserContext);
   const {cartQuantity, cartPrice, cartTax, cartShipping, cartTotal} = cartProduct;
   return (
     <div className="border-2 mt-5 w-25 h-auto">
@@ -20,17 +20,16 @@ const Cart = () => {
             </tr>
             <tr>
               <td className='border-0'>Shipping:</td>
-              <td className='border-0'>0</td>
+              <td className='border-0'>{cartShipping.toFixed(2)}</td>
             </tr>
-            <tr>
+            <tr style={{borderTop:'1px solid black'}}>
               <td className='border-0'>Total Cost:</td>
               <td className='border-0'>{cartTotal.toFixed(2)}</td>
             </tr>
           </tbody>
         </table>
       </div>
-
-      <button className="btn btn-info">Review Order</button>
+      {props.children}
     </div>
   );
 };

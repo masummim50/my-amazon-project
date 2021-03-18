@@ -1,31 +1,28 @@
 import React, { useContext } from 'react';
-import { cartContext } from '../App';
+import { UserContext } from '../App';
 
 const Product = (props) => {
   const singleProduct = props.singleProduct;
-  const {name, key, category, price,img,seller,shipping,star,stock} = singleProduct;
-  const [cartProduct, setCartProduct,addedProducts, setAddedProducts] = useContext(cartContext);
+  const {name, price,img} = singleProduct;
+  const [loggedInUser, setLoggedInUser, cartProduct, setCartProduct] = useContext(UserContext);
   const handleAddProduct = ()=> {
     
-    
-
-
     const newCart = {...cartProduct};
-    const {cartQuantity, cartPrice, cartTax, cartShipping, cartTotal} = newCart;
-    newCart.cartQuantity = cartQuantity + 1;
+    const {cartQuantity, cartShipping} = newCart;
+    newCart.cartQuantity = parseFloat(cartQuantity) + 1;
     newCart.cartPrice += price;
     newCart.cartTax += price/15;
     newCart.cartShipping += cartShipping;
     const total = newCart.cartPrice + newCart.cartTax;
     newCart.cartTotal = total;
     setCartProduct(newCart);
-    console.log(newCart)
-  }
+    console.log('newcart',newCart)
+  };
   return (
     <div className="col">
       <div className="card h-100">
         <div className="card-body">
-          <img src={img} alt=""/>
+          <img className='w-100' src={img} alt=""/>
           <div className="info">
             <h6>{name}</h6>
           </div>

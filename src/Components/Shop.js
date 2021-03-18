@@ -10,7 +10,7 @@ const Shop = () => {
   },[])
   return (
     <div className="container w-75">
-      <div className="row row-cols-1 row-cols-md-2 g-4">
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         {
           allProducts.map(singleProduct => <Product singleProduct = {singleProduct}></Product>)
         }
