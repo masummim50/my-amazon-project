@@ -23,8 +23,9 @@ function App() {
     cartShipping: 0,
     cartTotal: 0
   });
+  const [addedProducts, setAddedProducts]= useState([]);
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser, cartProduct, setCartProduct]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, cartProduct, setCartProduct, addedProducts, setAddedProducts]}>
       <Router>
         <Header></Header>
         <Switch>

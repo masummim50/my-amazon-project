@@ -4,8 +4,9 @@ import { UserContext } from '../App';
 const Product = (props) => {
   const singleProduct = props.singleProduct;
   const {name, price,img} = singleProduct;
-  const [loggedInUser, setLoggedInUser, cartProduct, setCartProduct] = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser, cartProduct, setCartProduct, addedProducts, setAddedProducts] = useContext(UserContext);
   const handleAddProduct = ()=> {
+
     
     const newCart = {...cartProduct};
     const {cartQuantity, cartShipping} = newCart;
