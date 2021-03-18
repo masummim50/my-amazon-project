@@ -18,10 +18,24 @@ const Login = () => {
   const {from} = location.state || {from : {pathname : '/'}};
   console.log('thisis from', from);
   const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const twitterProvider = new firebase.auth.TwitterAuthProvider();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [signIn, setSignIn] = useState(true);
   const handleGoogleSignIn = ()=> {
     firebase.auth().signInWithPopup(googleProvider)
+    .then(res => {
+      const gotUser = {
+        isLoggedIn: true,
+        name: res.user.displayName,
+        photo: res.user.photoURL,
+        email: res.user.email
+      };
+      setLoggedInUser(gotUser);
+      history.replace(from)
+    })
+  };
+  const handleTwitterSignIn = ()=> {
+    firebase.auth().signInWithPopup(twitterProvider)
     .then(res => {
       const gotUser = {
         isLoggedIn: true,
