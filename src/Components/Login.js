@@ -69,6 +69,7 @@ const Login = () => {
       <button className="btn btn-primary mb-3 form-control">Log in with facebook</button>
       <button onClick={handleGoogleSignIn} className="btn btn-danger mb-3 form-control">Log in with Gmail</button>
       <button className="btn btn-warning mb-3 form-control">Log in with Github</button>
+      <button onClick={handleTwitterSignIn} className="btn btn-warning mb-3 form-control">Log in with Twitter</button>
       </div>
       }
     </div>
